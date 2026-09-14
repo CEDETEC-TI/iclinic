@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reparación de Pantalla iPhone - iClinic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-white: #ffffff;
+            --bg-gray: #f5f5f7;
+            --text-primary: #1d1d1d;
+            --text-secondary: #6f6f77;
+            --border-color: #e5e5e7;
+            --accent: #003157;
+            --accent-hover: #004371;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) {
+                --bg-white: #1a1a1a;
+                --bg-gray: #2a2a2a;
+                --text-primary: #f5f5f7;
+                --text-secondary: #a1a1a6;
+                --border-color: #424245;
+                --accent: #0084ff;
+                --accent-hover: #3da5ff;
+            }
+        }
+
+        :root[data-theme="dark"] {
+            --bg-white: #1a1a1a;
+            --bg-gray: #2a2a2a;
+            --text-primary: #f5f5f7;
+            --text-secondary: #a1a1a6;
+            --border-color: #424245;
+            --accent: #0084ff;
+            --accent-hover: #3da5ff;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            background-color: var(--bg-white);
+            color: var(--text-primary);
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -1px;
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            font-size: 3.25rem;
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.8px;
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            max-width: 65ch;
+        }
+
+        header {
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            background-color: var(--bg-white);
+            backdrop-filter: blur(20px);
+            background-color: rgba(255, 255, 255, 0.8);
+            z-index: 100;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            header:not([data-theme="light"]) {
+                background-color: rgba(26, 26, 26, 0.8);
+            }
+        }
+
+        header[data-theme="dark"] {
+            background-color: rgba(26, 26, 26, 0.8);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1024px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .header-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .header-nav a:hover {
+            color: var(--text-primary);
+        }
+
+        .cta-header {
+            background-color: var(--accent);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .cta-header:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .hero {
+            padding: 6rem 2rem;
+            background-color: var(--bg-white);
+        }
+
+        .hero-content {
+            max-width: 1024px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-text p {
+            margin-bottom: 2rem;
+            font-size: 1.25rem;
+        }
+
+        .hero-image {
+            text-align: center;
+        }
+
+        .service-visual {
+            font-size: 8rem;
+            filter: drop-shadow(0 40px 80px rgba(0, 0, 0, 0.08));
+        }
+
+        .button {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 1rem 1.75rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: var(--accent-hover);
+        }
+
+        section {
+            padding: 6rem 2rem;
+        }
+
+        .container {
+            max-width: 1024px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .step {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            align-items: start;
+        }
+
+        .step-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        .step-content h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .step-content p {
+            margin: 0;
+        }
+
+        .faq-item {
+            padding: 2rem;
+            background-color: var(--bg-gray);
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+        }
+
+        .faq-item h3 {
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+        }
+
+        .faq-item p {
+            margin: 0;
+        }
+
+        .price-box {
+            background-color: var(--bg-gray);
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent);
+            text-align: center;
+        }
+
+        .price-box .price-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin: 0.5rem 0;
+        }
+
+        .price-box .price-note {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .benefit-card {
+            background-color: var(--bg-gray);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .benefit-icon {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .benefit-card h3 {
+            margin-bottom: 0.75rem;
+        }
+
+        .benefit-card p {
+            font-size: 1rem;
+        }
+
+        .cta-section {
+            text-align: center;
+            background-color: var(--bg-gray);
+        }
+
+        .cta-section h2 {
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        footer {
+            padding: 3rem 2rem;
+            background-color: var(--bg-gray);
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+        }
+
+        footer p {
+            max-width: none;
+            margin: 0;
+            color: var(--text-secondary);
+        }
+
+        .back-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s ease;
+        }
+
+        .back-link:hover {
+            gap: 0.75rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 1.875rem;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .step {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .step-number {
+                font-size: 2rem;
+            }
+
+            .header-nav {
+                gap: 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            section {
+                padding: 4rem 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .service-visual {
+                font-size: 5rem;
+            }
+
+            .header-nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <a href="iclinic.html" class="logo">iClinic</a>
+            <nav class="header-nav">
+                <a href="iclinic.html#servicios">Servicios</a>
+                <a href="iclinic.html#ubicacion">Ubicación</a>
+                <a href="#contacto" class="cta-header">Contactar</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <a href="iclinic.html" class="back-link"><i class="fas fa-arrow-left"></i> Volver</a>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Reparación de Pantalla iPhone</h1>
+                <p>Pantalla rota, con líneas, dead pixels o cristal defectuoso. Reemplazamos con componentes de calidad original con garantía total.</p>
+                <a href="https://wa.me/+54370470739?text=Hola%20iClinic%2C%20necesito%20reparar%20la%20pantalla%20de%20mi%20iPhone" class="button">Contactar ahora</a>
+            </div>
+            <div class="hero-image">
+                <div class="service-visual"><i class="fas fa-mobile"></i></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Descripción del servicio -->
+    <section class="container">
+        <h2 style="text-align: center; margin-bottom: 2rem;">Qué incluye nuestro servicio</h2>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon"><i class="fas fa-check-circle"></i></div>
+                <h3>Diagnóstico gratuito</h3>
+                <p>Revisamos tu iPhone sin costo para identificar el problema exacto.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon"><i class="fas fa-box"></i></div>
+                <h3>Repuestos originales</h3>
+                <p>Usamos componentes de calidad OEM con garantía de funcionamiento.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon"><i class="fas fa-shield"></i></div>
+                <h3>Garantía total</h3>
+                <p>6 meses de garantía en todas nuestras reparaciones de pantalla.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon"><i class="fas fa-clock"></i></div>
+                <h3>Servicio rápido</h3>
+                <p>Reparación en 24 hs sin demoras. Servicio urgente disponible.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon"><i class="fas fa-lock"></i></div>
+                <h3>Tu información segura</h3>
+                <p>No realizamos respaldo de datos ni accedemos a tu contenido personal.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon"><i class="fas fa-dollar-sign"></i></div>
+                <h3>Presupuesto transparente</h3>
+                <p>Conoces el precio antes de la reparación, sin sorpresas.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proceso -->
+    <section style="background-color: var(--bg-gray);">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 3rem;">Nuestro proceso</h2>
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Recepción y diagnóstico</h3>
+                    <p>Recibes tu iPhone en nuestro taller. Hacemos un diagnóstico completo del daño de la pantalla y probamos todas las funciones del dispositivo.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Presupuesto</h3>
+                    <p>Te presentamos un presupuesto detallado indicando el costo exacto de la reparación y el tiempo estimado de entrega.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Reparación profesional</h3>
+                    <p>Nuestros técnicos especializados reemplazan la pantalla dañada con un componente de calidad original, asegurando todos los ajustes.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>Testing y control</h3>
+                    <p>Realizamos pruebas exhaustivas: pantalla, tactil, brillo, colores, sensores, cámara. Verificamos que todo funcione perfectamente.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <h3>Entrega y garantía</h3>
+                    <p>Tu iPhone está listo. Te entregamos con garantía de 6 meses en la pantalla reparada y documentación de la reparación.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modelos y precios -->
+    <section>
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 3rem;">Precios orientativos por modelo</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+                <div class="price-box">
+                    <h3>iPhone 14/15</h3>
+                    <div class="price-value">$18.000</div>
+                    <div class="price-note">Pantalla OLED</div>
+                </div>
+                <div class="price-box">
+                    <h3>iPhone 13</h3>
+                    <div class="price-value">$16.500</div>
+                    <div class="price-note">Pantalla OLED</div>
+                </div>
+                <div class="price-box">
+                    <h3>iPhone 12/11</h3>
+                    <div class="price-value">$14.000</div>
+                    <div class="price-note">LCD/OLED</div>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 2rem; font-size: 0.95rem;">*Los precios son orientativos y pueden variar según el modelo específico y el tipo de daño. Solicita tu presupuesto personalizado.</p>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section style="background-color: var(--bg-gray);">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 3rem;">Preguntas frecuentes</h2>
+            <div class="faq-item">
+                <h3><i class="fas fa-question-circle"></i> ¿Cuánto tarda una reparación de pantalla?</h3>
+                <p>En general, entre 24 a 48 horas. Contamos con servicio urgente si necesitas tu iPhone más rápidamente. Consulta disponibilidad.</p>
+            </div>
+            <div class="faq-item">
+                <h3><i class="fas fa-question-circle"></i> ¿Qué pasa si la pantalla se daña después de la reparación?</h3>
+                <p>La garantía de 6 meses cubre defectos de fabricación. Si se daña por un accidente nuevo, es un caso diferente pero te lo reparamos a precio especial.</p>
+            </div>
+            <div class="faq-item">
+                <h3><i class="fas fa-question-circle"></i> ¿Pierdo mis datos si reparan la pantalla?</h3>
+                <p>No. La reparación de pantalla no requiere acceso a datos. Tu iPhone conserva toda la información intacta.</p>
+            </div>
+            <div class="faq-item">
+                <h3><i class="fas fa-question-circle"></i> ¿Reparan cualquier modelo de iPhone?</h3>
+                <p>Sí, trabajamos con todos los modelos: iPhone 15, 14, 13, 12, 11, X, XS, 8, 7 y anteriores.</p>
+            </div>
+            <div class="faq-item">
+                <h3><i class="fas fa-question-circle"></i> ¿El presupuesto tiene costo?</h3>
+                <p>No. El diagnóstico y presupuesto son completamente gratuitos. Solo pagas si autorizas la reparación.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="cta-section" id="contacto">
+        <div class="container">
+            <h2>¿Tu pantalla necesita reparación?</h2>
+            <p>Contacta con nosotros hoy. Diagnóstico gratuito y presupuesto sin compromiso. Estamos en Formosa, listos para ayudarte.</p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/+54370470739?text=Hola%20iClinic%2C%20necesito%20reparar%20la%20pantalla%20de%20mi%20iPhone" class="button">Escribir por WhatsApp</a>
+                <a href="tel:+54370470739" class="button" style="background-color: var(--bg-white); color: var(--text-primary); border: 1px solid var(--border-color);">Llamar ahora</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 iClinic. Reparación profesional de iPhones en Formosa, Argentina. | Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

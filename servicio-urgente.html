@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicio Urgente iPhone - iClinic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --bg-white: #ffffff; --bg-gray: #f5f5f7; --text-primary: #1d1d1d; --text-secondary: #6f6f77; --border-color: #e5e5e7; --accent: #003157; --accent-hover: #004371; }
+        @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg-white: #1a1a1a; --bg-gray: #2a2a2a; --text-primary: #f5f5f7; --text-secondary: #a1a1a6; --border-color: #424245; --accent: #0084ff; --accent-hover: #3da5ff; } }
+        :root[data-theme="dark"] { --bg-white: #1a1a1a; --bg-gray: #2a2a2a; --text-primary: #f5f5f7; --text-secondary: #a1a1a6; --border-color: #424245; --accent: #0084ff; --accent-hover: #3da5ff; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif; background-color: var(--bg-white); color: var(--text-primary); line-height: 1.6; font-size: 16px; }
+        h1 { font-size: 4.5rem; font-weight: 800; line-height: 1.05; letter-spacing: -1px; margin-bottom: 1.5rem; }
+        h2 { font-size: 3.25rem; font-weight: 800; line-height: 1.1; letter-spacing: -0.8px; margin-bottom: 1.5rem; }
+        h3 { font-size: 1.5rem; font-weight: 600; line-height: 1.3; margin-bottom: 1rem; }
+        p { font-size: 1.125rem; color: var(--text-secondary); line-height: 1.7; max-width: 65ch; }
+        header { padding: 1rem 0; border-bottom: 1px solid var(--border-color); position: sticky; top: 0; background-color: var(--bg-white); backdrop-filter: blur(20px); background-color: rgba(255, 255, 255, 0.8); z-index: 100; }
+        .header-content { display: flex; justify-content: space-between; align-items: center; max-width: 1024px; margin: 0 auto; padding: 0 2rem; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--text-primary); text-decoration: none; }
+        .header-nav { display: flex; gap: 2.5rem; align-items: center; }
+        .header-nav a { color: var(--text-secondary); text-decoration: none; font-size: 1rem; font-weight: 400; transition: color 0.3s ease; }
+        .header-nav a:hover { color: var(--text-primary); }
+        .cta-header { background-color: var(--accent); color: white; padding: 0.5rem 1rem; border-radius: 8px; font-weight: 500; transition: background-color 0.3s ease; font-size: 0.95rem; }
+        .cta-header:hover { background-color: var(--accent-hover); }
+        .hero { padding: 6rem 2rem; }
+        .hero-content { max-width: 1024px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .hero-text h1 { margin-bottom: 1.5rem; color: #ff6b6b; }
+        .hero-text p { margin-bottom: 2rem; font-size: 1.25rem; }
+        .button { display: inline-block; background-color: #ff6b6b; color: white; padding: 1rem 1.75rem; border-radius: 12px; text-decoration: none; font-weight: 500; font-size: 1rem; transition: background-color 0.3s ease; border: none; cursor: pointer; }
+        .button:hover { background-color: #ff5252; }
+        .service-visual { font-size: 8rem; filter: drop-shadow(0 40px 80px rgba(0, 0, 0, 0.08)); }
+        section { padding: 6rem 2rem; }
+        .container { max-width: 1024px; margin: 0 auto; }
+        .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem; }
+        .benefit-card { background-color: var(--bg-gray); padding: 1.5rem; border-radius: 12px; text-align: center; }
+        .benefit-icon { font-size: 2rem; color: #ff6b6b; margin-bottom: 1rem; }
+        .benefit-card h3 { margin-bottom: 0.75rem; }
+        .benefit-card p { font-size: 1rem; }
+        .urgency-box { background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%); color: white; padding: 2rem; border-radius: 12px; text-align: center; margin: 2rem 0; }
+        .urgency-box h3 { color: white; font-size: 1.75rem; }
+        .urgency-box p { color: rgba(255,255,255,0.9); font-size: 1.1rem; }
+        .step { display: grid; grid-template-columns: 100px 1fr; gap: 2rem; margin-bottom: 3rem; align-items: start; }
+        .step-number { font-size: 3rem; font-weight: 800; color: #ff6b6b; line-height: 1; }
+        .faq-item { padding: 2rem; background-color: var(--bg-gray); border-radius: 12px; margin-bottom: 1.5rem; }
+        .faq-item h3 { color: #ff6b6b; margin-bottom: 0.75rem; }
+        .faq-item p { margin: 0; }
+        .cta-section { text-align: center; background-color: #fff5f5; border: 2px solid #ff6b6b; border-radius: 12px; }
+        .cta-section h2 { margin-bottom: 1rem; color: #ff6b6b; }
+        .cta-section p { margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        footer { padding: 3rem 2rem; background-color: var(--bg-gray); border-top: 1px solid var(--border-color); text-align: center; color: var(--text-secondary); font-size: 0.9375rem; }
+        footer p { max-width: none; margin: 0; color: var(--text-secondary); }
+        .back-link { color: var(--accent); text-decoration: none; font-weight: 500; margin-bottom: 2rem; display: inline-flex; align-items: center; gap: 0.5rem; transition: gap 0.3s ease; }
+        .back-link:hover { gap: 0.75rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="iclinic.html" class="logo">iClinic</a>
+            <nav class="header-nav">
+                <a href="iclinic.html#servicios">Servicios</a>
+                <a href="iclinic.html#ubicacion">Ubicación</a>
+                <a href="#contacto" class="cta-header">Contactar</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <a href="iclinic.html" class="back-link"><i class="fas fa-arrow-left"></i> Volver</a>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Servicio Urgente</h1>
+                <p>¿Necesitas tu iPhone reparado YA? Atendemos emergencias con prioridad absoluta. Reparaciones rápidas sin esperas innecesarias.</p>
+                <a href="https://wa.me/+54370470739?text=URGENTE%3A%20Necesito%20reparaci%C3%B3n%20inmediata%20de%20mi%20iPhone" class="button"><i class="fas fa-bolt"></i> Contactar ahora</a>
+            </div>
+            <div class="hero-image" style="text-align: center;">
+                <div class="service-visual"><i class="fas fa-bolt"></i></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="urgency-box">
+            <h3>⚡ Reparaciones en menos de 4 horas</h3>
+            <p>Disponibilidad de emergencia. Trabajamos desde las 8 AM hasta las 20 PM. Consulta por disponibilidad de servicio urgente.</p>
+        </div>
+    </div>
+
+    <section class="container">
+        <h2 style="text-align: center; margin-bottom: 2rem;">¿Por qué elegirnos para emergencias?</h2>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon"><i class="fas fa-hourglass-end"></i></div>
+                <h3>Rápido</h3>
+                <p>Reparaciones en 2-4 horas según el problema. Sin demoras innecesarias.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon"><i class="fas fa-phone"></i></div>
+                <h3>Disponible</h3>
+                <p>Atiende llamadas durante toda la jornada. Contacto directo con técnicos.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon"><i class="fas fa-check-circle"></i></div>
+                <h3>Profesional</h3>
+                <p>Misma calidad que nuestras reparaciones normales, pero con máxima velocidad.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon"><i class="fas fa-dollar-sign"></i></div>
+                <h3>Sin recargo sorpresa</h3>
+                <p>Precio normal. Servicio urgente sin sobrecostos ocultos (consulta tarifa).</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon"><i class="fas fa-map-location-dot"></i></div>
+                <h3>Ubicación central</h3>
+                <p>Formosa centro. Fácil acceso y sin complicaciones para recibir tu iPhone.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon"><i class="fas fa-guarantee"></i></div>
+                <h3>Garantía igual</h3>
+                <p>Misma garantía que trabajos normales. Garantizamos la reparación urgente.</p>
+            </div>
+        </div>
+    </section>
+
+    <section style="background-color: var(--bg-gray);">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 3rem;">Cómo funciona el servicio urgente</h2>
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Llama ahora</h3>
+                    <p>Contacta por teléfono o WhatsApp indicando el problema urgente. Atienden en tiempo real.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Dirección al taller</h3>
+                    <p>Nos indicaremos la ubicación exacta. Vos vienes directamente al taller sin intermediarios.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Diagnóstico inmediato</h3>
+                    <p>En el acto evaluamos el problema y te indicamos el costo exacto y tiempo de reparación.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>Reparación prioritaria</h3>
+                    <p>Tu iPhone entra en la fila urgente. Lo reparamos con máxima prioridad sin demoras.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <h3>Retiro inmediato</h3>
+                    <p>Apenas está listo, te avisamos. Retiras tu iPhone reparado con garantía.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 2rem;">Casos típicos de emergencia</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                <div style="background-color: #fff5f5; padding: 1.5rem; border-radius: 12px; border-left: 4px solid #ff6b6b;">
+                    <h3 style="color: #ff6b6b; margin-bottom: 0.75rem;"><i class="fas fa-power-off"></i> No enciende</h3>
+                    <p style="margin: 0; font-size: 1rem;">Tu iPhone no responde. Revisamos batería y hardware en minutos.</p>
+                </div>
+                <div style="background-color: #fff5f5; padding: 1.5rem; border-radius: 12px; border-left: 4px solid #ff6b6b;">
+                    <h3 style="color: #ff6b6b; margin-bottom: 0.75rem;"><i class="fas fa-sync"></i> Reinicia constantemente</h3>
+                    <p style="margin: 0; font-size: 1rem;">Ciclo infinito de reinicios. Diagnóstico y reparación urgentes.</p>
+                </div>
+                <div style="background-color: #fff5f5; padding: 1.5rem; border-radius: 12px; border-left: 4px solid #ff6b6b;">
+                    <h3 style="color: #ff6b6b; margin-bottom: 0.75rem;"><i class="fas fa-water"></i> Mojado / Líquido</h3>
+                    <p style="margin: 0; font-size: 1rem;">Caída en agua. Secado profesional inmediato para salvar el equipo.</p>
+                </div>
+                <div style="background-color: #fff5f5; padding: 1.5rem; border-radius: 12px; border-left: 4px solid #ff6b6b;">
+                    <h3 style="color: #ff6b6b; margin-bottom: 0.75rem;"><i class="fas fa-mobilealt"></i> Pantalla negra</h3>
+                    <p style="margin: 0; font-size: 1rem;">Pantalla sin imagen. Revisamos pantalla y componentes en emergencia.</p>
+                </div>
+                <div style="background-color: #fff5f5; padding: 1.5rem; border-radius: 12px; border-left: 4px solid #ff6b6b;">
+                    <h3 style="color: #ff6b6b; margin-bottom: 0.75rem;"><i class="fas fa-battery-empty"></i> Batería hinchada</h3>
+                    <p style="margin: 0; font-size: 1rem;">Batería expandida y peligrosa. Reparación urgente de seguridad.</p>
+                </div>
+                <div style="background-color: #fff5f5; padding: 1.5rem; border-radius: 12px; border-left: 4px solid #ff6b6b;">
+                    <h3 style="color: #ff6b6b; margin-bottom: 0.75rem;"><i class="fas fa-shield-crack"></i> Pantalla rota urgente</h3>
+                    <p style="margin: 0; font-size: 1rem;">Necesitas el iPhone funcionando hoy. Reparamos en menos de 4 hs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="background-color: var(--bg-gray);">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 3rem;">Preguntas sobre servicio urgente</h2>
+            <div class="faq-item">
+                <h3><i class="fas fa-question-circle"></i> ¿Hay recargo por servicio urgente?</h3>
+                <p>Depende de la reparación. Hay un pequeño recargo por prioridad. Consulta el precio exacto cuando llames.</p>
+            </div>
+            <div class="faq-item">
+                <h3><i class="fas fa-question-circle"></i> ¿Garantizan reparación en 4 horas?</h3>
+                <p>Lo intentamos siempre. Según la complejidad, puede extenderse. Nos comprometemos a máxima velocidad posible.</p>
+            </div>
+            <div class="faq-item">
+                <h3><i class="fas fa-question-circle"></i> ¿Atienden fines de semana?</h3>
+                <p>Sábados sí. Domingos solo emergencias muy puntuales. Consulta disponibilidad cuando llames.</p>
+            </div>
+            <div class="faq-item">
+                <h3><i class="fas fa-question-circle"></i> ¿Puedo dejar el iPhone y retirar después?</h3>
+                <p>Sí. Si no esperas, retiras cuando esté listo. Te avisamos por teléfono cuando está reparado.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section" id="contacto">
+        <div class="container">
+            <h2>⚡ ¿EMERGENCIA AHORA?</h2>
+            <p>Llama AHORA. Nos comprometemos a máxima velocidad en tu reparación. Disponible para emergencias.</p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/+54370470739?text=URGENTE%3A%20Necesito%20reparaci%C3%B3n%20inmediata%20de%20mi%20iPhone" class="button">WhatsApp urgente</a>
+                <a href="tel:+54370470739" class="button" style="background-color: #ff6b6b; color: white;"><i class="fas fa-phone"></i> LLAMAR AHORA</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 iClinic. Reparación profesional de iPhones en Formosa, Argentina. | Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

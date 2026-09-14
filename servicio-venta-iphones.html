@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venta de iPhones - iClinic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --bg-white: #ffffff; --bg-gray: #f5f5f7; --text-primary: #1d1d1d; --text-secondary: #6f6f77; --border-color: #e5e5e7; --accent: #003157; --accent-hover: #004371; }
+        @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg-white: #1a1a1a; --bg-gray: #2a2a2a; --text-primary: #f5f5f7; --text-secondary: #a1a1a6; --border-color: #424245; --accent: #0084ff; --accent-hover: #3da5ff; } }
+        :root[data-theme="dark"] { --bg-white: #1a1a1a; --bg-gray: #2a2a2a; --text-primary: #f5f5f7; --text-secondary: #a1a1a6; --border-color: #424245; --accent: #0084ff; --accent-hover: #3da5ff; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif; background-color: var(--bg-white); color: var(--text-primary); line-height: 1.6; font-size: 16px; }
+        h1 { font-size: 4.5rem; font-weight: 800; line-height: 1.05; letter-spacing: -1px; margin-bottom: 1.5rem; }
+        h2 { font-size: 3.25rem; font-weight: 800; line-height: 1.1; letter-spacing: -0.8px; margin-bottom: 1.5rem; }
+        h3 { font-size: 1.5rem; font-weight: 600; line-height: 1.3; margin-bottom: 1rem; }
+        p { font-size: 1.125rem; color: var(--text-secondary); line-height: 1.7; max-width: 65ch; }
+        header { padding: 1rem 0; border-bottom: 1px solid var(--border-color); position: sticky; top: 0; background-color: var(--bg-white); backdrop-filter: blur(20px); background-color: rgba(255, 255, 255, 0.8); z-index: 100; }
+        .header-content { display: flex; justify-content: space-between; align-items: center; max-width: 1024px; margin: 0 auto; padding: 0 2rem; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--text-primary); text-decoration: none; }
+        .header-nav { display: flex; gap: 2.5rem; align-items: center; }
+        .header-nav a { color: var(--text-secondary); text-decoration: none; font-size: 1rem; font-weight: 400; transition: color 0.3s ease; }
+        .header-nav a:hover { color: var(--text-primary); }
+        .cta-header { background-color: var(--accent); color: white; padding: 0.5rem 1rem; border-radius: 8px; font-weight: 500; transition: background-color 0.3s ease; font-size: 0.95rem; }
+        .cta-header:hover { background-color: var(--accent-hover); }
+        .hero { padding: 6rem 2rem; }
+        .hero-content { max-width: 1024px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .hero-text h1 { margin-bottom: 1.5rem; }
+        .hero-text p { margin-bottom: 2rem; font-size: 1.25rem; }
+        .button { display: inline-block; background-color: var(--accent); color: white; padding: 1rem 1.75rem; border-radius: 12px; text-decoration: none; font-weight: 500; font-size: 1rem; transition: background-color 0.3s ease; border: none; cursor: pointer; }
+        .button:hover { background-color: var(--accent-hover); }
+        .service-visual { font-size: 8rem; filter: drop-shadow(0 40px 80px rgba(0, 0, 0, 0.08)); }
+        section { padding: 6rem 2rem; }
+        .container { max-width: 1024px; margin: 0 auto; }
+        .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem; }
+        .benefit-card { background-color: var(--bg-gray); padding: 1.5rem; border-radius: 12px; text-align: center; }
+        .benefit-icon { font-size: 2rem; color: var(--accent); margin-bottom: 1rem; }
+        .benefit-card h3 { margin-bottom: 0.75rem; }
+        .benefit-card p { font-size: 1rem; }
+        .model-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .model-card { background-color: var(--bg-gray); padding: 2rem; border-radius: 12px; text-align: center; border-left: 4px solid var(--accent); }
+        .model-card h3 { color: var(--text-primary); }
+        .model-specs { font-size: 0.95rem; color: var(--text-secondary); margin: 1rem 0; line-height: 1.8; }
+        .price-range { font-size: 1.5rem; font-weight: 800; color: var(--accent); margin: 1rem 0; }
+        .cta-section { text-align: center; background-color: var(--bg-gray); }
+        .cta-section h2 { margin-bottom: 1rem; }
+        .cta-section p { margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        footer { padding: 3rem 2rem; background-color: var(--bg-gray); border-top: 1px solid var(--border-color); text-align: center; color: var(--text-secondary); font-size: 0.9375rem; }
+        footer p { max-width: none; margin: 0; color: var(--text-secondary); }
+        .back-link { color: var(--accent); text-decoration: none; font-weight: 500; margin-bottom: 2rem; display: inline-flex; align-items: center; gap: 0.5rem; transition: gap 0.3s ease; }
+        .back-link:hover { gap: 0.75rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="iclinic.html" class="logo">iClinic</a>
+            <nav class="header-nav">
+                <a href="iclinic.html#servicios">Servicios</a>
+                <a href="iclinic.html#ubicacion">Ubicación</a>
+                <a href="#contacto" class="cta-header">Contactar</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <a href="iclinic.html" class="back-link"><i class="fas fa-arrow-left"></i> Volver</a>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Venta de iPhones</h1>
+                <p>Modelos nuevos y usados en excelente estado. Asesoramiento personalizado para elegir el iPhone ideal según tu presupuesto y necesidades.</p>
+                <a href="https://wa.me/+54370470739?text=Hola%20iClinic%2C%20me%20interesa%20comprar%20un%20iPhone%20%2F%20ver%20disponibilidad" class="button">Ver inventario</a>
+            </div>
+            <div class="hero-image" style="text-align: center;">
+                <div class="service-visual"><i class="fas fa-mobile"></i></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <h2 style="text-align: center; margin-bottom: 2rem;">¿Por qué comprar con iClinic?</h2>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon"><i class="fas fa-check-circle"></i></div>
+                <h3>Garantía total</h3>
+                <p>6 meses de garantía en todos nuestros iPhone, nuevos y usados.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon"><i class="fas fa-shield"></i></div>
+                <h3>100% verificados</h3>
+                <p>Todos los equipos pasan control de funcionamiento exhaustivo.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon"><i class="fas fa-phone"></i></div>
+                <h3>Sin problemas ocultos</h3>
+                <p>Te indicamos exactamente el estado del equipo antes de comprar.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon"><i class="fas fa-exchange"></i></div>
+                <h3>Cambio disponible</h3>
+                <p>Si en 15 días no te satisface, lo cambiamos sin costo.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon"><i class="fas fa-user-tie"></i></div>
+                <h3>Asesoramiento experto</h3>
+                <p>Te recomendamos el modelo ideal según tus necesidades y presupuesto.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon"><i class="fas fa-dollar-sign"></i></div>
+                <h3>Mejores precios</h3>
+                <p>Sin intermediarios. Precios justos directo en Formosa.</p>
+            </div>
+        </div>
+    </section>
+
+    <section style="background-color: var(--bg-gray);">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 3rem;">Modelos disponibles</h2>
+            <div class="model-grid">
+                <div class="model-card">
+                    <h3>iPhone 15 / 15 Pro</h3>
+                    <div class="model-specs">
+                        • Procesador A17 Pro<br>
+                        • Cámara 48MP<br>
+                        • USB-C<br>
+                        • Nuevo
+                    </div>
+                    <div class="price-range">$120.000 - $180.000</div>
+                </div>
+                <div class="model-card">
+                    <h3>iPhone 14 / 14 Pro</h3>
+                    <div class="model-specs">
+                        • Procesador A15 Bionic<br>
+                        • Pantalla 120Hz<br>
+                        • ProMotion<br>
+                        • Nuevo/Usado
+                    </div>
+                    <div class="price-range">$85.000 - $145.000</div>
+                </div>
+                <div class="model-card">
+                    <h3>iPhone 13 / 13 Mini</h3>
+                    <div class="model-specs">
+                        • Procesador A15<br>
+                        • Modo Noche<br>
+                        • Video Cinematic<br>
+                        • Usado
+                    </div>
+                    <div class="price-range">$55.000 - $95.000</div>
+                </div>
+                <div class="model-card">
+                    <h3>iPhone 12 / 12 Pro</h3>
+                    <div class="model-specs">
+                        • Procesador A14<br>
+                        • 5G<br>
+                        • MagSafe<br>
+                        • Usado
+                    </div>
+                    <div class="price-range">$45.000 - $75.000</div>
+                </div>
+                <div class="model-card">
+                    <h3>iPhone 11</h3>
+                    <div class="model-specs">
+                        • Procesador A13<br>
+                        • Cámara ultra gran angular<br>
+                        • Batería duradera<br>
+                        • Usado
+                    </div>
+                    <div class="price-range">$30.000 - $50.000</div>
+                </div>
+                <div class="model-card">
+                    <h3>iPhone X / XS</h3>
+                    <div class="model-specs">
+                        • Pantalla OLED<br>
+                        • Face ID<br>
+                        • Dual SIM<br>
+                        • Usado
+                    </div>
+                    <div class="price-range">$20.000 - $40.000</div>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 2rem; font-size: 0.95rem;">*Precios orientativos según estado y modelo. Stock limitado. Consulta disponibilidad.</p>
+        </div>
+    </section>
+
+    <section class="cta-section" id="contacto">
+        <div class="container">
+            <h2>¿Buscas un iPhone?</h2>
+            <p>Contacta para consultar disponibilidad, modelos en stock y las mejores opciones según tu presupuesto. Asesoramiento personalizado sin compromiso.</p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/+54370470739?text=Hola%20iClinic%2C%20me%20interesa%20comprar%20un%20iPhone%20%2F%20ver%20disponibilidad" class="button">Consultar disponibilidad</a>
+                <a href="tel:+54370470739" class="button" style="background-color: var(--bg-white); color: var(--text-primary); border: 1px solid var(--border-color);">Llamar ahora</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 iClinic. Reparación profesional de iPhones en Formosa, Argentina. | Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
